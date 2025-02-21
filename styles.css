@@ -1,58 +1,80 @@
+/* Configuração geral da página */
 body {
     display: flex;
-    width: 99%;
-    height: 100%;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: #f5f5f7;
-}
-
-header{
-    display: flex;
-    width: 100%;
-    height: 5%;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    background-image: url('https://static.mundoeducacao.uol.com.br/mundoeducacao/2021/11/galaxia.jpg');
-}
-
-header p{
-    color: white;
-    font-size: 25px;
-}
-
-figure {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: end;
-}
-
-
-img{
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f7;
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-#explicacaodoJogo {
+/* Estilização do cabeçalho */
+header {
     display: flex;
+    width: 100%;
+    height: 80px;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    background-image: url('https://static.mundoeducacao.uol.com.br/mundoeducacao/2021/11/galaxia.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
     text-align: center;
-    height: 100%;
-    width: 100%;
+    padding: 10px;
+}
+
+/* Estilização da explicação do jogo */
+#explicacaodoJogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    margin: 40px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #explicacaodoJogo p {
     font-size: 20px;
-    line-height: normal;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Estilização da imagem da nave */
+figure {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease-in-out;
+}
+
+figure img:hover {
+    transform: scale(1.1);
 }
