@@ -179,6 +179,9 @@ figure img:hover {
 
 footer{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color:rgb(79, 100, 119);
     width: 1900px;
     height: 100px;
