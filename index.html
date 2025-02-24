@@ -32,19 +32,64 @@
         <img src="https://images.vexels.com/media/users/3/307300/isolated/preview/52013eea8107e24472003c918a86f8e8-alien-olhando-do-disco-voador.png" alt="nave" id="praclicar">
     </figure>
     
-    <div id="chatbotContainer">
-        <div id="chatbothelp">
-            <h3>ChatBot</h3>
-            <div id="duvidasinput">
-                <input type="text" placeholder="Tire aqui sua dúvida" id="duvidas" style="width: 200px; height: 30px; border-radius: 10px;">
-                <ion-icon name="caret-forward-outline" style="width: 20px; height: 20px;"></ion-icon>
+    <div id="chatbothelp">
+        <h3>ChatBot</h3>
+        <div id="chatbotResponses"></div>
+        <div id="duvidasContainer">
+            <h4>Perguntas Frequentes</h4>
+            <button id="backButton" onclick="backToSections()" style="display: none;">Voltar</button>
+            <div id="duvidasOptions">
+                <div class="section">
+                    <button onclick="toggleSection('info')" class="secao">📌 Informações Gerais</button>
+                    <div id="info" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('oi')" class="Buttonperguntas">Oi</button>
+                        <button onclick="respostaChatbot('qual é o seu nome?')" class="Buttonperguntas">Qual é o seu nome?</button>
+                        <button onclick="respostaChatbot('quem está desenvolvendo o aplicativo?')" class="Buttonperguntas">Quem está desenvolvendo o aplicativo?</button>
+                        <button onclick="respostaChatbot('onde posso encontrar mais informações?')" class="Buttonperguntas">Onde posso encontrar mais informações?</button>
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <button onclick="toggleSection('app')" class="secao">📱 Sobre o Aplicativo/Jogo</button>
+                    <div id="app" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('como funciona o aplicativo?')" class="Buttonperguntas">Como funciona o aplicativo?</button>
+                        <button onclick="respostaChatbot('qual é o objetivo do jogo?')" class="Buttonperguntas">Qual é o objetivo do jogo?</button>
+                        <button onclick="respostaChatbot('como o jogo avalia o desempenho?')" class="Buttonperguntas">Como o jogo avalia o desempenho?</button>
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <button onclick="toggleSection('access')" class="secao">♿ Acessibilidade e Compatibilidade</button>
+                    <div id="access" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('quais dispositivos são compatíveis?')" class="Buttonperguntas">Quais dispositivos são compatíveis?</button>
+                        <button onclick="respostaChatbot('o aplicativo é acessível para pessoas com mobilidade reduzida?')" class="Buttonperguntas">O aplicativo é acessível?</button>
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <button onclick="toggleSection('test')" class="secao">📝 Testes e Sugestões</button>
+                    <div id="test" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('como posso testar o aplicativo?')" class="Buttonperguntas">Como posso testar o aplicativo?</button>
+                        <button onclick="respostaChatbot('posso sugerir melhorias?')" class="Buttonperguntas">Posso sugerir melhorias?</button>
+                        <button onclick="respostaChatbot('quais tipos de testes posso fazer no aplicativo?')" class="Buttonperguntas">Quais tipos de testes posso fazer no aplicativo?</button>
+                        <button onclick="respostaChatbot('quais melhorias posso sugerir para o aplicativo?')" class="Buttonperguntas">Quais melhorias posso sugerir para o aplicativo?</button>
+                    </div>
+                </div>
+    
+                <div class="section">
+                    <button onclick="toggleSection('download')" class="secao">📥 Disponibilidade</button>
+                    <div id="download" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('qualquer um pode baixar o jogo?')" class="Buttonperguntas">Qualquer um pode baixar o jogo?</button>
+                        <button onclick="respostaChatbot('em quais plataformas o jogo estará disponível?')" class="Buttonperguntas">Em quais plataformas o jogo estará disponível?</button>
+                        <button onclick="respostaChatbot('como posso baixar o jogo?')" class="Buttonperguntas">Como posso baixar o jogo?</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
-
 </body>
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
