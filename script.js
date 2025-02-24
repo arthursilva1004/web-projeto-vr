@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatbotHelp = document.getElementById("chatbothelp");
     const chatbotButton = document.getElementById("praclicar");
 
+    // Abrir/fechar chatbot
     chatbotButton.addEventListener("click", function () {
         toggleChatbot();
     });
@@ -12,50 +13,68 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotButton.style.right = isOpen ? "20px" : "420px";
     }
 
-    document.querySelectorAll(".question-btn").forEach(button => {
+    // Mostrar perguntas da seção selecionada
+    document.querySelectorAll(".secao").forEach(button => {
         button.addEventListener("click", function () {
-            respostaChatbot(button.innerText);
+            const sectionId = this.getAttribute("data-section");
+            toggleSection(sectionId);
         });
     });
 
-    document.getElementById("duvidas").addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            respostaChatbot();
-        }
-    });
-
-    document.getElementById("sendBtn").addEventListener("click", function () {
-        respostaChatbot();
-    });
+    // Botão "Voltar"
+    document.getElementById("backButton").addEventListener("click", backToSections);
 });
 
-function respostaChatbot(userText = null) {
-    const inputField = document.getElementById("duvidas");
-    const responseContainer = document.getElementById("chatbotResponses");
-    let text = userText ? userText.trim() : inputField.value.trim();
+function toggleSection(sectionId) {
+    // Oculta todas as perguntas
+    document.querySelectorAll(".questions").forEach(section => {
+        section.style.display = "none";
+    });
 
-    if (text !== "") {
-        addMessage(text, "userMessage");
-
-        setTimeout(() => {
-            const botResponse = getBotResponse(text);
-            addMessage(botResponse, "botMessage");
-        }, 500);
-        if (!userText) inputField.value = "";
+    // Mostra as perguntas da seção selecionada
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = "block";
     }
+
+    // Oculta todas as seções
+    document.querySelectorAll(".secao").forEach(button => {
+        button.style.display = "none";
+    });
+
+    // Mostra o botão "Voltar"
+    document.getElementById("backButton").style.display = "block";
 }
 
-// Adicionar mensagem ao chat
-function addMessage(text, className) {
+function backToSections() {
+    // Oculta todas as perguntas
+    document.querySelectorAll(".questions").forEach(section => {
+        section.style.display = "none";
+    });
+
+    // Mostra todas as seções
+    document.querySelectorAll(".secao").forEach(button => {
+        button.style.display = "block";
+    });
+
+    // Oculta o botão "Voltar"
+    document.getElementById("backButton").style.display = "none";
+}
+
+// Função para responder às perguntas
+function respostaChatbot(userText) {
     const responseContainer = document.getElementById("chatbotResponses");
+    const botResponse = getBotResponse(userText);
+
+    // Adiciona a resposta ao chat
     const messageDiv = document.createElement("div");
-    messageDiv.classList.add("message", className);
-    messageDiv.innerText = text;
+    messageDiv.classList.add("message", "botMessage");
+    messageDiv.innerText = botResponse;
     responseContainer.appendChild(messageDiv);
     responseContainer.scrollTop = responseContainer.scrollHeight;
 }
 
+// Respostas do chatbot
 function getBotResponse(input) {
     const responses = {
         "oi": "Olá! Como posso te ajudar?",
@@ -75,76 +94,7 @@ function getBotResponse(input) {
         "quais melhorias posso sugerir para o aplicativo?": "Fique à vontade para sugerir melhorias! Acreditamos que a colaboração é essencial para melhorar o aplicativo. Caso tenha ideias, pode nos enviar pelo nosso e-mail ou pelo direct do Instagram: @senacminas.",
         "em quais plataformas o jogo estará disponível?": "O jogo estará disponível para dispositivos móveis, necessitando também de um óculos de realidade virtual (VR) ou de realidade aumentada (AR). Fique atento às atualizações para mais detalhes.",
         "como posso baixar o jogo?": "O jogo estará disponível para download nas principais lojas de aplicativos, como o Google Play. Acompanhe nosso Instagram @senacminas para saber a data exata do lançamento."
-
     };
 
     return responses[input.toLowerCase()] || "Desculpe, não entendi sua pergunta.";
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    var backButton = document.getElementById('backButton');
-    if (backButton) {
-        backButton.addEventListener('click', backToSections);
-    }
-
-    var sectionButtons = document.querySelectorAll('.secao');
-    sectionButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var sectionId = this.nextElementSibling.id;
-            toggleSection(sectionId);
-        });
-    });
-});
-
-function toggleSection(id) {
-    var allSections = document.querySelectorAll('.secao');
-    allSections.forEach(function(section) {
-        section.classList.remove('selected');
-    });
-
-    var sectionButton = document.getElementById(id);
-    if (sectionButton) {
-        sectionButton.classList.add('selected');
-    }
-
-    var allQuestions = document.querySelectorAll('.questions');
-    allQuestions.forEach(function(section) {
-        section.style.display = 'none';
-    });
-
-    var section = document.getElementById(id);
-    if (section) {
-        section.style.display = 'block';
-        document.getElementById("questions").style.display = 'flex'
-    } else {
-        console.error(`Seção com id "${id}" não encontrada.`);
-    }
-
-    var options = document.getElementById('duvidasOptions');
-    if (options) {
-        options.style.display = 'none';
-    }
-
-    var backButton = document.getElementById('backButton');
-    if (backButton) {
-        backButton.style.display = 'inline-block';
-    }
-}
-
-
-function backToSections() {
-    var options = document.getElementById('duvidasOptions');
-    if (options) {
-        options.style.display = 'block';
-    }
-
-    var backButton = document.getElementById('backButton');
-    if (backButton) {
-        backButton.style.display = 'none';
-    }
-
-    var allSections = document.querySelectorAll('.questions');
-    allSections.forEach(function(section) {
-        section.style.display = 'none';
-    });
 }
