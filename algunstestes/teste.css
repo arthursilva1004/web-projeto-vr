@@ -19,9 +19,7 @@ header {
     height: 80px;
     justify-content: center;
     align-items: center;
-    background-image: url('https://static.vecteezy.com/ti/fotos-gratis/p1/50753044-roxa-e-azul-galaxia-com-estrelas-e-uma-preto-fundo-foto.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color:rgb(79, 100, 119);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -32,6 +30,16 @@ header p {
     text-align: center;
     padding: 10px;
 }
+
+#divtitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 20px;
+    margin-top: 50px;
+}
+
 
 /* Estilização da explicação do jogo */
 #explicacaodoJogo {
@@ -50,7 +58,6 @@ header p {
 }
 
 #explicacaodoJogo p {
-    font-size: 20px;
     line-height: 1;
     font-weight: bold;
     color: #333;
@@ -85,38 +92,23 @@ figure img:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(160, 174, 221);
+    background-color:rgb(79, 100, 119);
     border-radius: 15px;
 }
 
 #videoExplicativo{
-    display: flex;
-    width: 800px;
+    width: 900px;
     height: 400px;
     background-color: #333;
     border-radius: 15px;
     
 }
 
-.explicacao2{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 10%;
-    max-width: 900px;
-    margin: 40px 0;
-    padding: 20px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
 
 .porque{
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 1px;
 }
 
 .imagemdoporque{
@@ -132,16 +124,17 @@ figure img:hover {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 1400px;
+    width: 1800px;
     gap: 50px;
+    
 }
 
 .card{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 300px;
-    height: 500px;
+    width: 400px;
+    height: 300px;
     margin: 40px 0;
     padding: 20px;
     background: white;
@@ -156,14 +149,37 @@ figure img:hover {
     width: 100%;
     height: 10%;
     max-width: 900px;
-    margin: 40px 0;
+    margin: 10px 0;
     padding: 20px;
     background: white;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
  .imgg{
-    width: 1000px;
+    width: 935px;
     height: 500px;
     border-radius: 15px;
- }
+ 
+}
+
+.fotoscards{
+    width: 400px;
+    height: 100px;
+}
+
+#teste{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 1900px;
+    background-color:rgb(79, 100, 119);
+    padding-bottom: 5px;
+}
+
+footer{
+    display: flex;
+    background-color:rgb(79, 100, 119);
+    width: 1900px;
+    height: 100px;
+}
