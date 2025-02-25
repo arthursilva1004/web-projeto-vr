@@ -24,18 +24,20 @@
         <p>Além disso, a experiência lúdica ajuda a reduzir a frustração e o cansaço frequentemente associados a terapias tradicionais, tornando o processo mais prazeroso e estimulante.</p>
     </div>
 
-    <figure id="chatTrigger">
-        <img src="https://images.vexels.com/media/users/3/307300/isolated/preview/52013eea8107e24472003c918a86f8e8-alien-olhando-do-disco-voador.png" alt="nave" id="praclicar">
-    </figure>
+    <div id="chatboxtudo">
+        <figure id="chatTrigger">
+            <h4 id="chatbottext">CHATBOT</h4>
+            <img src="https://images.vexels.com/media/users/3/307300/isolated/preview/52013eea8107e24472003c918a86f8e8-alien-olhando-do-disco-voador.png" alt="nave" id="praclicar">
+        </figure>
+    </div>
     
     <div id="chatbothelp">
         <h3>ChatBot</h3>
         <div id="chatbotResponses"></div>
         <div id="duvidasContainer">
             <h4>Perguntas Frequentes</h4>
-            <button id="backButton" onclick="backToSections()" style="display: none;">Voltar</button>
+            
             <div id="duvidasOptions">
-                <!-- Seção 1: Informações Gerais -->
                 <div class="section">
                     <button data-section="info" class="secao">📌 Informações Gerais</button>
                     <div id="info" class="questions" style="display: none;">
@@ -85,6 +87,7 @@
                         <button onclick="respostaChatbot('como posso baixar o jogo?')" class="Buttonperguntas">Como posso baixar o jogo?</button>
                     </div>
                 </div>
+                <button id="backButton" onclick="backToSections()" style="display: none;">Voltar</button>
             </div>
         </div>
     </div>

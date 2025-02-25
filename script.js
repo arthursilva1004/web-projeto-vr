@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const chatbotHelp = document.getElementById("chatbothelp");
     const chatbotButton = document.getElementById("praclicar");
+    const chatbotText = document.getElementById("chatbottext");
 
-    // Abrir/fechar chatbot
     chatbotButton.addEventListener("click", function () {
         toggleChatbot();
     });
@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const isOpen = chatbotHelp.style.right === "0px";
         chatbotHelp.style.right = isOpen ? "-450px" : "0px";
         chatbotButton.style.right = isOpen ? "20px" : "420px";
+        chatbotText.style.display = isOpen ? "block" : "none";
     }
 
-    // Mostrar perguntas da seção selecionada
     document.querySelectorAll(".secao").forEach(button => {
         button.addEventListener("click", function () {
             const sectionId = this.getAttribute("data-section");
@@ -21,58 +21,61 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Botão "Voltar"
     document.getElementById("backButton").addEventListener("click", backToSections);
 });
 
 function toggleSection(sectionId) {
-    // Oculta todas as perguntas
     document.querySelectorAll(".questions").forEach(section => {
         section.style.display = "none";
+        section.style.opacity = "0";
     });
 
-    // Mostra as perguntas da seção selecionada
     const selectedSection = document.getElementById(sectionId);
     if (selectedSection) {
         selectedSection.style.display = "block";
+        selectedSection.style.opacity = "1";
     }
 
-    // Oculta todas as seções
     document.querySelectorAll(".secao").forEach(button => {
         button.style.display = "none";
     });
 
-    // Mostra o botão "Voltar"
     document.getElementById("backButton").style.display = "block";
 }
 
+
 function backToSections() {
-    // Oculta todas as perguntas
     document.querySelectorAll(".questions").forEach(section => {
         section.style.display = "none";
     });
 
-    // Mostra todas as seções
     document.querySelectorAll(".secao").forEach(button => {
         button.style.display = "block";
     });
 
-    // Oculta o botão "Voltar"
     document.getElementById("backButton").style.display = "none";
 }
 
 // Função para responder às perguntas
 function respostaChatbot(userText) {
     const responseContainer = document.getElementById("chatbotResponses");
-    const botResponse = getBotResponse(userText);
 
-    // Adiciona a resposta ao chat
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("message", "botMessage");
-    messageDiv.innerText = botResponse;
-    responseContainer.appendChild(messageDiv);
-    responseContainer.scrollTop = responseContainer.scrollHeight;
+    const userMessageDiv = document.createElement("div");
+    userMessageDiv.classList.add("message", "userMessage");
+    userMessageDiv.innerText = userText;
+    responseContainer.appendChild(userMessageDiv);
+
+    setTimeout(() => {
+        const botResponse = getBotResponse(userText);
+        const botMessageDiv = document.createElement("div");
+        botMessageDiv.classList.add("message", "botMessage");
+        botMessageDiv.innerText = botResponse;
+        responseContainer.appendChild(botMessageDiv);
+
+        responseContainer.scrollTop = responseContainer.scrollHeight;
+    }, 500);
 }
+
 
 // Respostas do chatbot
 function getBotResponse(input) {
