@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aplicativo para pessoas com Deficiencia de Movimentos</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.3.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.3.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.3.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    
+    <link rel="stylesheet" href="segunda.css">
+  </head>
+  <body>
+    <header>
+        <p><b>Sistema de Ajuda a Pessoas com Dificuldades na Movimentação</b></p>
+        <img style="width: 70px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlJm-MU63dWXt83PUUcwx1X9DsWFPoBMYpWg&s" alt="">
+    </header>
+
+
+    <div id="divtitulo">
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">ENTENDA MAIS SOBRE ESSE PROJETO</h1>
+    </div>
+
+    
+    
+        <div id="explicacaodoJogo">
+            <p><b>Nosso projeto é um jogo inovador em realidade virtual (VR), desenvolvido com o propósito de auxiliar pessoas que enfrentam dificuldades motoras.</b></p>
+            <p><b>A tecnologia VR permite a criação de um ambiente imersivo e interativo, onde os usuários podem realizar atividades projetadas para estimular seus movimentos de forma natural e progressiva.</b></p>
+
+            <p><b>Nosso principal objetivo é proporcionar uma alternativa acessível e eficaz para a reabilitação motora,</b></p>
+            <p><b>especialmente para aqueles que não possuem condições financeiras para arcar com tratamentos convencionais.</b></p>
+        </div>
+
+    <div id="teste"  >
+        <div class="porque"> 
+            
+            <p style="font-size: x-large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white;">POR QUE O JOGO FOI DESENVOLVIDO? <img style="width: 40px; margin-left: 450px;" src="https://static.vecteezy.com/system/resources/previews/018/722/931/non_2x/star-shape-symbol-on-transparent-background-free-png.png" alt=""></p> 
+            <div class="diferenciais">
+                <p><b>O jogo foi desenvolvido com base em estudos sobre reabilitação motora e gamificação,</b></p>
+                <p><b>garantindo que os exercícios sejam não apenas eficazes, mas também motivadores.</b></p>
+                <p><b>Por meio de desafios interativos, os usuários são incentivados a se movimentar, fortalecendo músculos, aprimorando a coordenação e recuperando funções motoras de maneira gradual e envolvente.</b></p>
+                <p><b>Além disso, a experiência lúdica ajuda a reduzir a frustração e o cansaço frequentemente associados a terapias tradicionais, tornando o processo mais prazeroso e estimulante.</b></p>
+                
+                <div class="demonstrativa">
+                    <p style="color: white;">VIDEO DEMONSTRATIVO:</p>
+                    <div id="videoExplicativo">
+                        <video controls width="100%" height="100%">
+                            <source src="source/index.html - web-projeto-vr - Visual Studio Code 2025-02-26 13-57-00.mp4" type="video/mp4">
+                            Seu navegador não suporta videos
+                        </video>
+                    </div>
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+
+
+    <p style="font-size: x-large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >DIFERENCIAIS DO JOGO:</p>
+
+        <div class="diferenciais">
+
+        <p><b>O diferencial do nosso aplicativo é a capacidade de personalização do tratamento.</b></p>
+        <p><b>O sistema pode ser ajustado para atender às necessidades individuais de cada usuário,</b></p>
+        <p><b>permitindo que profissionais da saúde configurem atividades específicas de acordo com o nível de dificuldade e os objetivos terapêuticos de cada pessoa.</b></p>
+        <p><b>Dessa forma, a plataforma se adapta a diferentes perfis de usuários,</b></p>
+        <p><b>desde aqueles que precisam de um suporte inicial para movimentação até aqueles que buscam aprimorar habilidades motoras específicas.</b></p>
+
+        </div>
+
+
+
+    <div class="paraoscards">
+        <div class="card">
+            <img src="https://th.bing.com/th/id/OIP.KLdywaeOwQctN1YSa6Z4vQHaE8?w=275&h=184&c=7&r=0&o=5&pid=1.7" alt="">
+        </div>
+        <div class="card"> 
+            <img class="fotoscards" style="height: 100%; border-radius: 15px;" src="https://ufprvirtual.ufpr.br/theme/image.php/moove/theme_moove/1738073246/frontpagecard3icon" alt="">
+        </div>
+    </div>
+
+
+    <div id="chatboxtudo">
+        <figure id="chatTrigger">
+            <h4 id="chatbottext">CHATBOT</h4>
+            <img src="https://images.vexels.com/media/users/3/307300/isolated/preview/52013eea8107e24472003c918a86f8e8-alien-olhando-do-disco-voador.png" alt="nave" id="praclicar">
+        </figure>
+    </div>
+    
+    <div id="chatbothelp">
+        <h3>ChatBot</h3>
+        <div id="chatbotResponses"></div>
+        <div id="duvidasContainer">
+            <h4>Perguntas Frequentes</h4>
+            
+            <div id="duvidasOptions">
+                <div class="section">
+                    <button data-section="info" class="secao">📌 Informações Gerais</button>
+                    <div id="info" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('oi')" class="Buttonperguntas">Oi</button>
+                        <button onclick="respostaChatbot('qual é o seu nome?')" class="Buttonperguntas">Qual é o seu nome?</button>
+                        <button onclick="respostaChatbot('quem está desenvolvendo o aplicativo?')" class="Buttonperguntas">Quem está desenvolvendo o aplicativo?</button>
+                        <button onclick="respostaChatbot('onde posso encontrar mais informações?')" class="Buttonperguntas">Onde posso encontrar mais informações?</button>
+                    </div>
+                </div>
+    
+                <!-- Seção 2: Sobre o Aplicativo/Jogo -->
+                <div class="section">
+                    <button data-section="app" class="secao">📱 Sobre o Aplicativo/Jogo</button>
+                    <div id="app" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('como funciona o aplicativo?')" class="Buttonperguntas">Como funciona o aplicativo?</button>
+                        <button onclick="respostaChatbot('qual é o objetivo do jogo?')" class="Buttonperguntas">Qual é o objetivo do jogo?</button>
+                        <button onclick="respostaChatbot('como o jogo avalia o desempenho?')" class="Buttonperguntas">Como o jogo avalia o desempenho?</button>
+                    </div>
+                </div>
+    
+                <!-- Seção 3: Acessibilidade e Compatibilidade -->
+                <div class="section">
+                    <button data-section="access" class="secao">♿ Acessibilidade e Compatibilidade</button>
+                    <div id="access" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('quais dispositivos são compatíveis?')" class="Buttonperguntas">Quais dispositivos são compatíveis?</button>
+                        <button onclick="respostaChatbot('o aplicativo é acessível para pessoas com mobilidade reduzida?')" class="Buttonperguntas">O aplicativo é acessível?</button>
+                    </div>
+                </div>
+    
+                <!-- Seção 4: Testes e Sugestões -->
+                <div class="section">
+                    <button data-section="test" class="secao">📝 Testes e Sugestões</button>
+                    <div id="test" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('como posso testar o aplicativo?')" class="Buttonperguntas">Como posso testar o aplicativo?</button>
+                        <button onclick="respostaChatbot('posso sugerir melhorias?')" class="Buttonperguntas">Posso sugerir melhorias?</button>
+                        <button onclick="respostaChatbot('quais tipos de testes posso fazer no aplicativo?')" class="Buttonperguntas">Quais tipos de testes posso fazer no aplicativo?</button>
+                        <button onclick="respostaChatbot('quais melhorias posso sugerir para o aplicativo?')" class="Buttonperguntas">Quais melhorias posso sugerir para o aplicativo?</button>
+                    </div>
+                </div>
+    
+                <!-- Seção 5: Disponibilidade -->
+                <div class="section">
+                    <button data-section="download" class="secao">📥 Disponibilidade</button>
+                    <div id="download" class="questions" style="display: none;">
+                        <button onclick="respostaChatbot('qualquer um pode baixar o jogo?')" class="Buttonperguntas">Qualquer um pode baixar o jogo?</button>
+                        <button onclick="respostaChatbot('em quais plataformas o jogo estará disponível?')" class="Buttonperguntas">Em quais plataformas o jogo estará disponível?</button>
+                        <button onclick="respostaChatbot('como posso baixar o jogo?')" class="Buttonperguntas">Como posso baixar o jogo?</button>
+                    </div>
+                </div>
+                <button id="backButton" onclick="backToSections()" style="display: none;">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="segunda.js" defer></script>
+</body>
+
+
+
+<footer>
+    <div id="dofooter">
+        <div>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white; font-size: 20px;">Email para contatos: </p>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: flex; justify-content: center; color: white;font-size: x-large;">emailparareste@gmail.com</p>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>
+
