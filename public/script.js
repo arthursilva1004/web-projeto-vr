@@ -89,12 +89,12 @@ function getBotResponse(input) {
         "o aplicativo é acessível para pessoas com mobilidade reduzida?": "Sim! O aplicativo foi projetado para ser intuitivo e acessível, com suporte a gestos.",
         "como posso testar o aplicativo?": "No momento, estamos desenvolvendo o MVP (protótipo inicial). Fique de olho nas redes do SENAC e da equipe Inclua para ter acesso assim que o aplicativo for lançado!!",
         "posso sugerir melhorias?": "Claro! Valorizamos o feedback dos usuários. Assim que o aplicativo estiver disponível para testes, você poderá enviar feedbacks.",
-        "quem está desenvolvendo o aplicativo?": "O aplicativo está sendo desenvolvido por uma equipe de desenvolvedores do SENAC, com apoio da Inclua, uma organização sem fins lucrativos dedicada à inclusão digital e social.",
+        "quem está desenvolvendo o aplicativo?": "O aplicativo está sendo desenvolvido por uma equipe de Desenvolvedores de Sistemas do SENAC, com apoio da Inclua, uma organização sem fins lucrativos dedicada à inclusão digital e social.",
         "onde posso encontrar mais informações?": "Você pode entrar em contato com a equipe da Inclua pelo e-mail contato@inclua.org para mais informações.",
         "qualquer um pode baixar o jogo?": "O jogo será disponível para todos, mas pode haver requisitos específicos para alguns dispositivos. Acompanhe as atualizações em nossas redes sociais para saber mais sobre quando o jogo estará disponível para download e em quais plataformas.",
         "quando que o jogo vai ser lançado?": "Ainda não temos uma data exata do lançamento do jogo, porém assim que ele for lançado, compartilharemos em nosso Instagram: @senacminas e @incluanoinclusa",
         "quais tipos de testes posso fazer no aplicativo?": "Você pode realizar testes de funcionalidade, usabilidade e performance. Testes manuais, como o uso do aplicativo em diferentes dispositivos, e testes automatizados também são importantes para garantir a qualidade do app antes do lançamento.",
-        "quais melhorias posso sugerir para o aplicativo?": "Fique à vontade para sugerir melhorias! Acreditamos que a colaboração é essencial para melhorar o aplicativo. Caso tenha ideias, pode nos enviar pelo nosso e-mail ou pelo direct do Instagram: @senacminas.",
+        "quais melhorias posso sugerir para o aplicativo?": "Fique à vontade para sugerir melhorias! Acreditamos que a colaboração é essencial para melhorar o aplicativo. Caso tenha ideias, pode nos enviar pelo nosso e-mail da Inclua: contato@inclua.org ou pelo direct do Instagram do SENAC: @senacminas.",
         "em quais plataformas o jogo estará disponível?": "O jogo estará disponível para dispositivos móveis, necessitando também de um óculos de realidade virtual (VR) ou de realidade aumentada (AR). Fique atento às atualizações para mais detalhes.",
         "como posso baixar o jogo?": "O jogo estará disponível para download nas principais lojas de aplicativos, como o Google Play. Acompanhe nosso Instagram @senacminas para saber a data exata do lançamento."
     };
@@ -115,16 +115,16 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
 
-    const linkInstalar = document.getElementById("instalar-link");
     const linkInicio = document.getElementById("inicio-link");
+    const linkInstalar = document.getElementById("instalar-link");
 
-    if (path.includes("index.html")) {
-        if (linkInicio) {
-            linkInicio.classList.add("active-link");
-        }
-    } else if (path.includes("instalar.html")) {
-        if (linkInstalar) {
-            linkInstalar.classList.add("active-link");
-        }
+    if (linkInicio) linkInicio.classList.remove("active-link");
+    if (linkInstalar) linkInstalar.classList.remove("active-link");
+
+    if (path.includes("index.html") || path === "/") {
+        if (linkInicio) linkInicio.classList.add("active-link");
+    } 
+    else if (path.includes("instalar.html")) {
+        if (linkInstalar) linkInstalar.classList.add("active-link");
     }
 });

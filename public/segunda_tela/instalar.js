@@ -105,16 +105,16 @@ function getBotResponse(input) {
 document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
 
-    const linkInstalar = document.getElementById("instalar-link");
     const linkInicio = document.getElementById("inicio-link");
+    const linkInstalar = document.getElementById("instalar-link");
 
-    if (path.includes("index.html")) {
-        if (linkInicio) {
-            linkInicio.classList.add("active-link");
-        }
-    } else if (path.includes("instalar.html")) {
-        if (linkInstalar) {
-            linkInstalar.classList.add("active-link");
-        }
+    if (linkInicio) linkInicio.classList.remove("active-link");
+    if (linkInstalar) linkInstalar.classList.remove("active-link");
+
+    if (path.includes("index.html") || path === "/") {
+        if (linkInicio) linkInicio.classList.add("active-link");
+    } 
+    else if (path.includes("instalar.html")) {
+        if (linkInstalar) linkInstalar.classList.add("active-link");
     }
 });
