@@ -101,3 +101,30 @@ function getBotResponse(input) {
 
     return responses[input.toLowerCase()] || "Desculpe, não entendi sua pergunta.";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.pathname.includes("index.html")) {
+        const link = document.getElementById("instalar-link");
+
+        if (link) {
+            link.classList.add("active-link");
+        }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const path = window.location.pathname;
+
+    const linkInstalar = document.getElementById("instalar-link");
+    const linkInicio = document.getElementById("inicio-link");
+
+    if (path.includes("index.html")) {
+        if (linkInicio) {
+            linkInicio.classList.add("active-link");
+        }
+    } else if (path.includes("instalar.html")) {
+        if (linkInstalar) {
+            linkInstalar.classList.add("active-link");
+        }
+    }
+});
