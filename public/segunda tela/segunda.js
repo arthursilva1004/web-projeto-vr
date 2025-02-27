@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const linkInicio = document.getElementById("inicio-link");
     const linkInstalar = document.getElementById("instalar-link");
+    const linkSobre = document.getElementById("sobre-link")
 
     if (linkInicio) linkInicio.classList.remove("active-link");
     if (linkInstalar) linkInstalar.classList.remove("active-link");
@@ -114,6 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (path.includes("index.html") || path === "/") {
         if (linkInicio) linkInicio.classList.add("active-link");
     } 
+    if (path.includes("sobre.html") || path === "/") {
+        if (linkSobre) linkSobre.classList.add("active-link");
+    }
     else if (path.includes("segunda.html")) {
         if (linkInstalar) linkInstalar.classList.add("active-link");
     }

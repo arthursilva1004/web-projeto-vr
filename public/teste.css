@@ -50,6 +50,7 @@ nav{
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     font-size: 16px;
+    
 }
 
 .navee:hover {
@@ -61,7 +62,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
+    width: 400px;
     height: 50px;
     border-radius: 15px;
     border: 2px solid black;
@@ -72,12 +73,25 @@ nav{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+    }
+    100% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+}
+
 .active-link {
-    background-color: black;
+    background-image: url('https://images.tcdn.com.br/img/img_prod/1057913/estampa_ceu_estrelada_553_1_4b4b47d91a07686d0e156676efaaef95.jpg');
     color: white !important;
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 8px;
+    animation: pulseGlow 1.5s infinite alternate ease-in-out;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -490,3 +504,9 @@ figure img:hover {
 #backButton:hover {
     background-color: #e55347;
 }
+
+@media (max-width: 480px) {
+    #nave {
+        flex-direction: column;
+        gap: 5px;
+    }}
