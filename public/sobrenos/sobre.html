@@ -1,13 +1,11 @@
+<!---->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplicativo para pessoas com Deficiencia de Movimentos</title>
-
-    <!-- update the version number as needed -->
     <script defer src="/__/firebase/11.3.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/11.3.1/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/11.3.1/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/11.3.1/firebase-firestore-compat.js"></script>
@@ -17,10 +15,6 @@
     <script defer src="/__/firebase/11.3.1/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/11.3.1/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/11.3.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     
     <link rel="stylesheet" href="sobre.css">
@@ -45,41 +39,15 @@
         <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">SOBRE NOS</h2>
     </div>
 
-    
-    
-        <div id="explicacaodoJogo">
-            <p><b>Para fazer a instalação, são poucos passos, mas é necessário ter atenção.</b></p>
-            <p><b>Certifique-se que seu aparelho tenha o minimo de espaço recomendado para rodar o jogo.</b></p>
 
-            <p><b>O espaço minimo necessário para efetuar a instalação é de xGB,</b></p>
-            <p><b>Recomendamos que seu aparelho tenha no minimo o dobro de armazenamento SOBRANDO para conseguir aproveitar o jogo sem problemas.</b></p>
-        </div>
+    
+    <div id="explicacaodoJogo">
+        <p><b>Para fazer a instalação, são poucos passos, mas é necessário ter atenção.</b></p>
+        <p><b>Certifique-se que seu aparelho tenha o minimo de espaço recomendado para rodar o jogo.</b></p>
 
-    <div id="teste"  >
-        <div class="porque"> 
-            
-            <p style="font-size: x-large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: rgb(0, 0, 0);">BAIXAR COM O GITHUB? </p> 
-            <div class="diferenciais">
-                <h2>ESTA É UMA VERSÃO OPEN SOURCE⚠</h2>
-                <p><b>A versão open source é uma versão que você consegue ver o código do jogo, sendo possivel que você mesmo faça modificações.</b></p>
-                <p><b>Para efetuar o download, acesse o nosso <a href="https://github.com/arthursilva1004/web-projeto-vr">GIT HUB</a> e procure por um arquivo chamado DOWNLOAD.</b></p>
-                <p><b>Clique em cima do arquivo, e espere até que o download seja concluído.</b></p>
-                
-                <div class="demonstrativa">
-                    <p style="color: white;">VIDEO DEMONSTRATIVO:</p>
-                    <div id="videoExplicativo">
-                        <video controls width="100%" height="100%">
-                            <source src="source/index.html - web-projeto-vr - Visual Studio Code 2025-02-26 13-57-00.mp4" type="video/mp4">
-                            Seu navegador não suporta videos
-                        </video>
-                    </div>
-                </div>
-            
-            </div>
-            
-        </div>
+        <p><b>O espaço minimo necessário para efetuar a instalação é de xGB,</b></p>
+        <p><b>Recomendamos que seu aparelho tenha no minimo o dobro de armazenamento SOBRANDO para conseguir aproveitar o jogo sem problemas.</b></p>
     </div>
-
 
 
 
@@ -108,7 +76,6 @@
                     </div>
                 </div>
     
-                <!-- Seção 2: Sobre o Aplicativo/Jogo -->
                 <div class="section">
                     <button data-section="app" class="secao">📱 Sobre o Aplicativo/Jogo</button>
                     <div id="app" class="questions" style="display: none;">
@@ -118,7 +85,6 @@
                     </div>
                 </div>
     
-                <!-- Seção 3: Acessibilidade e Compatibilidade -->
                 <div class="section">
                     <button data-section="access" class="secao">♿ Acessibilidade e Compatibilidade</button>
                     <div id="access" class="questions" style="display: none;">
@@ -127,7 +93,6 @@
                     </div>
                 </div>
     
-                <!-- Seção 4: Testes e Sugestões -->
                 <div class="section">
                     <button data-section="test" class="secao">📝 Testes e Sugestões</button>
                     <div id="test" class="questions" style="display: none;">
@@ -137,8 +102,6 @@
                         <button onclick="respostaChatbot('quais melhorias posso sugerir para o aplicativo?')" class="Buttonperguntas">Quais melhorias posso sugerir para o aplicativo?</button>
                     </div>
                 </div>
-    
-                <!-- Seção 5: Disponibilidade -->
                 <div class="section">
                     <button data-section="download" class="secao">📥 Disponibilidade</button>
                     <div id="download" class="questions" style="display: none;">
