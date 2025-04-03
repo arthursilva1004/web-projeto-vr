@@ -63,13 +63,13 @@ header p {
 
 @keyframes pulseGlow {
     0% {
-        box-shadow: 0px 0px 10px rgba(57, 102, 224, 0.8);
+        box-shadow: 0px 0px 10px rgba(82, 91, 117, 0.8);
     }
     50% {
-        box-shadow: 0px 0px 20px rgba(57, 102, 224, 0.8);
+        box-shadow: 0px 0px 20px rgba(82, 91, 117, 0.8);
     }
     100% {
-        box-shadow: 0px 0px 10px rgba(57, 102, 224, 0.8);
+        box-shadow: 0px 0px 10px rgba(82, 91, 117, 0.8);
     }
 }
 
