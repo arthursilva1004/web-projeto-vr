@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomo VR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--dark);
+        }
+        
+        .navbar {
+  padding: 15px 0;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #111325 0%, #0b0c1d 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 12, 29, 0.98) !important;
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: rotate(15deg);
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 8px 15px !important;
+  margin: 0 5px;
+  position: relative;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #00f3ff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+  width: 60%;
+}
+
+.nav-link:hover {
+  color: #00f3ff !important;
+}
+
+.btn-download-nav {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-download-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 243, 255, 0.3);
+}
+
+        .hero-section {
+            padding: 100px 0;
+            background: linear-gradient(to right, #f8fafc 50%, #e2e8f0 50%);
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .version-card {
+            border: none;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .requirements-table {
+            width: 100%;
+            margin: 1rem 0;
+            min-width: 280px;
+            overflow-x: auto;
+            display: block;
+        }
+        .requirements-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary);
+        }
+        .badge-tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .btn-repo {
+            transition: all 0.3s ease;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+        .btn-repo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .bg-dark .text-muted {
+            color: #e2e8f0 !important;
+        }
+        .team-card-rect {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .team-card-rect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.1);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+
+        .team-img-rect {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #00f3ff;
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .team-info h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .github-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(0, 243, 255, 0.1);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .github-btn:hover {
+            background: rgba(0, 243, 255, 0.2);
+            color: #00f3ff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .team-img-rect {
+                height: 150px;
+            }
+        }
+        /* Estilos para a nova seção Sobre */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-list {
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+            margin-left: 8px;
+        }
+
+        .feature-card {
+            background-color: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .icon-lg {
+            font-size: 1.75rem;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .hover-shadow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.transition {
+    transition: all 0.3s ease;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+        <!-- Logo e Nome -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="https://cdn-icons-png.freepik.com/512/8036/8036315.png" alt="Logo" width="40" height="40" class="me-2">
+            <span class="fw-bold">ASTRONOMO VR</span>
+        </a>
+        
+        <!-- Botão Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Itens do Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#sobre">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#demonstracao">Desmonstração</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#equipe">Equipe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#versoes">Versões</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#repositorios">Repositórios</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#manual">Manual</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6">
+                    <img src="gameIcon.jpg" 
+                         alt="Interface do Jogo" 
+                         class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold mb-4">Astronomo VR</h1>
+                    <p class="lead mb-4">Reabilitação motora através de jogos imersivos</p>
+                    <div class="d-flex gap-3">
+                        <a href="#versoes" class="btn btn-primary btn-lg">Download</a>
+                        <a href="#sobre" class="btn btn-outline-primary btn-lg">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Sobre o Astronomo VR</h2>
+                <div class="d-flex justify-content-center">
+                    <div style="width: 80px; height: 4px; background: var(--primary);"></div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Sobre o Projeto -->
+                <div class="col-md-6">
+                    <div class="about-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary rounded-circle p-3 me-3">
+                                <i class="fas fa-rocket fa-lg"></i>
+                            </div>
+                            <h3 class="mb-0">Sobre o Projeto</h3>
+                        </div>
+                        <p class="lead">Revolucionando a reabilitação motora através da realidade virtual imersiva</p>
+                        
+                        <div class="feature-list">
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Terapia Acessível</h5>
+                                    <p class="mb-0">Solução de baixo custo para clínicas e uso doméstico</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Abordagem Inovadora</h5>
+                                    <p class="mb-0">Combina jogos imersivos com exercícios terapêuticos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Tecnologia Adaptável</h5>
+                                    <p class="mb-0">Compatível com diversos dispositivos e níveis de habilidade</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Como Funciona -->
+                <div class="col-md-6">
+                    <div class="about-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box bg-primary bg-opacity-10 text-primary rounded-circle p-3 me-3">
+                                <i class="fas fa-cogs fa-lg"></i>
+                            </div>
+                            <h3 class="mb-0">Como Funciona</h3>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="feature-card p-3 rounded-3 h-100">
+                                    <div class="icon-lg mb-3 text-primary">
+                                        <i class="fas fa-hand-paper"></i>
+                                    </div>
+                                    <h5>Controle por Gestos</h5>
+                                    <p class="small">Movimentos manuais detectados por câmera ou sensores</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <div class="feature-card p-3 rounded-3 h-100">
+                                    <div class="icon-lg mb-3 text-primary">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <h5>Jogo Terapêutico</h5>
+                                    <p class="small">Nave espacial controlada por movimentos precisos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <div class="feature-card p-3 rounded-3 h-100">
+                                    <div class="icon-lg mb-3 text-primary">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h5>Progresso Mensurável</h5>
+                                    <p class="small">Relatórios detalhados de evolução motora</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <div class="feature-card p-3 rounded-3 h-100">
+                                    <div class="icon-lg mb-3 text-primary">
+                                        <i class="fas fa-sliders-h"></i>
+                                    </div>
+                                    <h5>Dificuldade Adaptativa</h5>
+                                    <p class="small">Ajusta automaticamente ao nível do usuário</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Demonstração -->
+    <section id="demonstracao" class="py-5 bg-dark text-white">
+        <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="display-5 fw-bold mb-4">Veja o Astronomo VR em Ação</h2>
+            <p class="lead mb-4">Assista à demonstração completa do jogo e veja como a tecnologia de reconhecimento de gestos funciona na prática.</p>
+            
+            <div class="d-flex flex-wrap gap-3">
+                <div class="feature-item">
+                <i class="fas fa-hand-paper text-primary mb-2"></i>
+                <p>Controle por gestos</p>
+                </div>
+                <div class="feature-item">
+                <i class="fas fa-vr-cardboard text-primary mb-2"></i>
+                <p>Experiência imersiva</p>
+                </div>
+                <div class="feature-item">
+                <i class="fas fa-universal-access text-primary mb-2"></i>
+                <p>Design acessível</p>
+                </div>
+            </div>
+            </div>
+            
+            <div class="col-lg-6">
+            <div class="video-container rounded-3 overflow-hidden shadow-lg">
+                <div class="ratio ratio-16x9">
+                    <iframe src="../public/source/videodemonstrativo.mp4" 
+                            title="Demonstração" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="video-overlay d-flex align-items-center justify-content-center">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Seção da Equipe 3x3 -->
+    <section id="equipe" class="py-5" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-white mb-3">Nossa Equipe</h2>
+            <div class="d-flex justify-content-center">
+            <div style="width: 80px; height: 4px; background: #00f3ff;"></div>
+            </div>
+        </div>
+    
+        <div class="row g-4 justify-content-center">
+            <!-- Linha 1 -->
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/Kaique62.png" 
+                    alt="Membro 1" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Kaque Madureira</h4>
+                <a href="https://github.com/Kaique62" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/Z1C4z.png" 
+                    alt="Membro 2" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>André Luís</h4>
+                <a href="https://github.com/Z1C4z" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/PierreZx.png" 
+                    alt="Membro 3" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Hugo Pierre</h4>
+                <a href="https://github.com/PierreZx" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <!-- Linha 2 -->
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/Piterqle.png" 
+                    alt="Membro 4" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Pedro Henrique</h4>
+                <a href="https://github.com/Piterqle" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/vidigalbz.png" 
+                    alt="Membro 5" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Leonardo Vidigal</h4>
+                <a href="https://github.com/vidigalbz" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/brunagontijo13.png" 
+                    alt="Membro 6" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Bruna Gontijo</h4>
+                <a href="https://github.com/brunagontijo13" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <!-- Linha 3 -->
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/arthursilva1004.png" 
+                    alt="Membro 7" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Arthur Otavio</h4>
+                <a href="https://github.com/arthursilva1004" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/brnrd7.png" 
+                    alt="Membro 8" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Bernardo Gualberto</h4>
+                <a href="https://github.com/brnrd7" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+    
+            <div class="col-md-4">
+            <div class="team-card-rect">
+                <img src="https://github.com/brunagontijo13.png" 
+                    alt="Membro 9" 
+                    class="team-img-rect">
+                <div class="team-info">
+                <h4>Gabriel Henrique</h4>
+                <a href="https://github.com/brunagontijo13" 
+                    class="github-btn" 
+                    target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Versões -->
+    <section id="versoes" class="py-5">
+        <div class="container py-5">
+            <h2 class="text-center mb-5">Versões Disponíveis</h2>
+            <div class="row g-4">
+                <!-- Versão Unity -->
+                <div class="col-md-4">
+                    <div class="version-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" 
+                             alt="Unity Logo" 
+                             class="img-fluid mb-4" 
+                             style="height: 60px">
+                        <h3>Unity (Pro)</h3>
+                        <p class="text-muted">Versão Autônoma para Android</p>
+                        
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Mínimos</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Android 10+</td>
+                            </tr>
+                            <tr>
+                                <td>Memória RAM</td>
+                                <td>4GB</td>
+                            </tr>
+                            <tr>
+                                <td>Armazenamento</td>
+                                <td>1GB livre</td>
+                            </tr>
+                        </table>
+
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Recomendados</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Android 12+</td>
+                            </tr>
+                            <tr>
+                                <td>Memória RAM</td>
+                                <td>8GB</td>
+                            </tr>
+                            <tr>
+                                <td>Armazenamento</td>
+                                <td>2GB livre</td>
+                            </tr>
+                        </table>
+
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">Download APK</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Versão Godot -->
+                <div class="col-md-4">
+                    <div class="version-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" 
+                             alt="Godot Logo" 
+                             class="img-fluid mb-4" 
+                             style="height: 60px">
+                        <h3>Godot (Lite)</h3>
+                        <p class="text-muted">Versão para Dispositivos Básicos</p>
+                        
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Mínimos</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Android 8+</td>
+                            </tr>
+                            <tr>
+                                <td>Memória RAM</td>
+                                <td>3GB</td>
+                            </tr>
+                            <tr>
+                                <td>Conexão</td>
+                                <td>Wi-Fi 5GHz</td>
+                            </tr>
+                        </table>
+
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Recomendados</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Android 11+</td>
+                            </tr>
+                            <tr>
+                                <td>Memória RAM</td>
+                                <td>4GB</td>
+                            </tr>
+                            <tr>
+                                <td>Conexão</td>
+                                <td>Wi-Fi 6</td>
+                            </tr>
+                        </table>
+
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">Download APK</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software PC -->
+                <div class="col-md-4">
+                    <div class="version-card">
+                        <img src="https://cdn-icons-png.flaticon.com/512/874/874728.png " 
+                             alt="Windows Logo" 
+                             class="img-fluid mb-4" 
+                             style="height: 60px">
+                        <h3>Software PC</h3>
+                        <p class="text-muted">Controle por Webcam</p>
+                        
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Mínimos</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Windows 10</td>
+                            </tr>
+                            <tr>
+                                <td>Processador</td>
+                                <td>i3 8ª Geração</td>
+                            </tr>
+                            <tr>
+                                <td>Webcam</td>
+                                <td>720p</td>
+                            </tr>
+                        </table>
+
+                        <table class="requirements-table">
+                            <tr>
+                                <th colspan="2">Requisitos Recomendados</th>
+                            </tr>
+                            <tr>
+                                <td>Sistema Operacional</td>
+                                <td>Windows 11</td>
+                            </tr>
+                            <tr>
+                                <td>Processador</td>
+                                <td>i5 10ª Geração</td>
+                            </tr>
+                            <tr>
+                                <td>Webcam</td>
+                                <td>1080p</td>
+                            </tr>
+                        </table>
+
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary">Download EXE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repositórios -->
+    <section id="repositorios" class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="text-center mb-5">Repositórios do Projeto</h2>
+            <div class="row g-4">
+                <!-- Repositório Unity -->
+                <div class="col-md-6">
+                    <div class="version-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" 
+                                alt="Unity Logo" 
+                                style="height: 50px">
+                            <h3 class="ms-3 mb-0">Versao Unity</h3>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-muted">Versão autônoma para Android com detecção nativa de gestos</p>
+                            <div class="badge-tech">
+                                <span class="badge bg-primary me-2">C#</span>
+                                <span class="badge bg-primary">Mediapipie Unity SDK</span>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary btn-repo d-flex align-items-center justify-content-center">
+                                <i class="fab fa-github me-2"></i>Repositório GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repositório Godot + PC -->
+                <div class="col-md-6">
+                    <div class="version-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" 
+                                    alt="Godot Logo" 
+                                    style="height: 50px">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888847.png" 
+                                    alt="Windows Logo" 
+                                    style="height: 50px" 
+                                    class="ms-2">
+                            </div>
+                            <h3 class="ms-3 mb-0">Godot + PC</h3>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-muted">Versão leve para Android e software de detecção para PC</p>
+                            <div class="badge-tech">
+                                <span class="badge bg-primary me-2">GDScript</span>
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">OpenCV</span>
+                                <span class="badge bg-primary">Mediapipe</span>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary btn-repo d-flex align-items-center justify-content-center">
+                                <i class="fab fa-github me-2"></i>Repositório GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="manual" class="py-6 bg-light mb-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">📚 Documentação Completa</h2>
+                <p class="lead text-muted">Explore nossos manuais detalhados para tirar o máximo proveito da plataforma ou colaborar no desenvolvimento.</p>
+            </div>
+    
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; font-size: 2rem;">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h5 class="fw-semibold">Manual do Usuário</h5>
+                            <p class="text-muted">Guia passo a passo para utilizar todas as funcionalidades da plataforma com facilidade.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">Acessar Documentação</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                        <div class="card-body p-4 text-center">
+                            <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; font-size: 2rem;">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h5 class="fw-semibold">Guia de Desenvolvimento</h5>
+                            <p class="text-muted">Documentação técnica para devs que desejam contribuir ou integrar com o sistema.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">Acessar Documentação</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-semibold mb-2">Desenvolvido por alunos do SENAC Divinópolis-MG</h5>
+                    <p class="mb-0 small">© 2024-2025 • Orientação: Prof. Michael Ferreira</p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
